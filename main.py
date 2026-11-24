@@ -8,6 +8,8 @@ deterministic, no network.
 
 import os
 
+MAX_ENTRY_CHARS = 200
+
 SENTENCE = (
     "One ant crosses my kitchen tile carrying a crumb ten times its size, "
     "and suddenly I am the weather in somebody's moving day."
@@ -16,8 +18,8 @@ SENTENCE = (
 
 def main() -> None:
     text = SENTENCE
-    if not (1 <= len(text) <= 200):
-        raise SystemExit(f"sentence length {len(text)} outside 1-200 characters")
+    if not (1 <= len(text) <= MAX_ENTRY_CHARS):
+        raise SystemExit(f"sentence length {len(text)} outside 1-{MAX_ENTRY_CHARS} characters")
     if not text.strip():
         raise SystemExit("sentence is only whitespace")
     os.makedirs("/output", exist_ok=True)
